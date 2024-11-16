@@ -1,0 +1,13 @@
+
+    <h1>Создать новое мороженое</h1>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Создать</button>
+    </form>
+    <a href="{% url 'ice_cream_list' %}">Вернуться к списку</a>

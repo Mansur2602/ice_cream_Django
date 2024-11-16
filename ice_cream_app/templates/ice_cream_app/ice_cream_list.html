@@ -1,0 +1,19 @@
+    <title>Список Мороженых</title>
+
+    <h1>Список всех мороженых</h1>
+    {% if ice_creams %}
+        {% for ice_cream in ice_creams %}
+           
+        Название: {{ ice_cream.name }} <br>
+        Вкус: {{ ice_cream.flavor }}<br>
+        Цена: {{ ice_cream.price }}<br>
+                
+                <hr>
+            {% endfor %}
+
+    {% else %}
+        <p>Нет мороженых в базе данных.</p>
+    {% endif %}
+
+<a href="{% url 'create_ice_cream' %}">Добавить новое мороженое</a>
+
