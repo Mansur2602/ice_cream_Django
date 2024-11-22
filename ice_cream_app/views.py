@@ -6,7 +6,11 @@ def create_ice_cream(request):
     if request.method == 'POST':
         form = IceCreamForm(request.POST)
         if form.is_valid():
-            form.save()  
+            name = form.cleaned_data['name']
+            flavor = form.cleaned_data['flavor']
+            price = form.cleaned_data['price']
+            ice_cream = IceCream(name=name, flavor=flavor, price=price)
+            ice_cream.save()
             return render(request, 'ice_cream_app/success.html', {'message': 'Мороженое успешно добавлено!'})
         else:
             return render(request, 'ice_cream_app/create_ice_cream.html', {'form': form, 'message': 'Ошибка валидации, пожалуйста, исправьте данные.'})

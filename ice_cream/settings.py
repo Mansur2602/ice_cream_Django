@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ice_cream_app'
+    'ice_cream_app',
+    'captcha'
 ]
 
 MIDDLEWARE = [
