@@ -2,7 +2,7 @@
 
     <h1>Список всех мороженых</h1>
     {% if ice_creams %}
-        {% for ice_cream in ice_creams %}
+        {% for ice_cream in page.object_list  %}
            
         Название: {{ ice_cream.name }} <br>
         Вкус: {{ ice_cream.flavor }}<br>
@@ -10,10 +10,24 @@
                 
                 <hr>
             {% endfor %}
+            <div>
+                {% if page.has_previous %}
+                  <a href="?page={{ page.previous_page_number }}"> &lt; </a>
+                {% else %}
+                  &nbsp;  &lt; &nbsp;
+                {% endif %}
+                Страница {{ page.number }} из {{ page.paginator.num_pages }}
+                {% if page.has_next %}
+                  <a href="?page={{ page.next_page_number }}"> &gt; </a>
+                {% else %}
+                  &nbsp; &gt; &nbsp;
+                {% endif %}
+              </div>
 
     {% else %}
         <p>Нет мороженых в базе данных.</p>
     {% endif %}
+   
 
 <a href="{% url 'create_ice_cream' %}">Добавить новое мороженое</a>
 
