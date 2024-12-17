@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import IceCreamForm
+from .forms import IceCreamForm, FormIceCreamSearch
 from .models import IceCream
 
 def create_ice_cream(request):
@@ -25,5 +25,26 @@ def ice_cream_list(request):
     ice_creams = IceCream.objects.all()
 
     return render(request, 'ice_cream_app/ice_cream_list.html', {'ice_creams': ice_creams})
+
+
+
+
+
+def ice_cream_search(request):
+    ice_creams = []
+    form = FormIceCreamSearch(request.POST)  
+
+
+    if form.is_valid():
+        search_name = form.cleaned_data['name']
+
+        ice_creams = IceCream.objects.filter(name=search_name)
+
+    return render(request, 'ice_cream_app/ice_cream_search.html', {
+        'form': form,
+        'ice_creams': ice_creams,
+    })
+
+
 
 

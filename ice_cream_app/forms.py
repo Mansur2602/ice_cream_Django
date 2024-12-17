@@ -39,6 +39,15 @@ class IceCreamForm(forms.Form):
         return flavor
     
 
-    
+class FormIceCreamSearch(forms.Form):
+
+  name = forms.CharField(max_length=100, label='Название мороженого', 
+                         help_text='Введите название мороженого для поиска',
+                        strip=True,
+                        widget= forms.TextInput(attrs= {
+                          'placeholder': 'Название мороженого',
+                          'class': 'form-control'})
+                    
+                           )
 
 

@@ -1,0 +1,20 @@
+<h1>Поиск мороженого</h1>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}  
+  <button type="submit">Искать</button>
+</form>
+
+{% if ice_creams %}
+  <h3>Результаты поиска</h3>
+  
+    {% for ice_cream in ice_creams %}
+     <p> {{ ice_cream.name }} - {{ ice_cream.flavor }} - {{ ice_cream.price }} </p>
+    {% endfor %}
+  
+{% else %}
+  <p>Мороженое не найдено.</p>
+{% endif %}
+
+
